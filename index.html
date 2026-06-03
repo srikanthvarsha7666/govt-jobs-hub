@@ -10,7 +10,8 @@
   <a href="#">Notifications</a> |
   <a href="#">Current Affairs</a> |
   <a href="#">Daily Quiz</a>
-</nav>    
+</nav> 
+<input type="text" id="search" placeholder="Search Notifications..." onkeyup="searchFun()">
 <h1>Govt Jobs Hub</h1>
 
 <h2>Latest Notifications</h2>
@@ -42,8 +43,33 @@
 <h2>Current Affairs</h2>
 <p>Daily current affairs ikkada untayi.</p>
 
-<h2>Daily Quiz</h2>
-<p>Daily quiz section ikkada untundi.</p>
+<h2>Daily Quiz</h2> 
+  <h2>Daily Quiz</h2>
 
+<div>
+  <p>Q1. Telangana Formation Day eppudu?</p>
+  <button>2 June</button>
+  <button>1 May</button>
+  <button>15 August</button>
+</div>
+
+<div>
+  <p>Q2. India Capital enti?</p>
+  <button>Delhi</button>
+  <button>Mumbai</button>
+  <button>Chennai</button>
+</div>
+<p>Daily quiz section ikkada untundi.</p>
+<script>
+function searchFun(){
+    let input = document.getElementById("search").value.toLowerCase();
+    let boxes = document.querySelectorAll("div");
+
+    boxes.forEach(box=>{
+        let text = box.innerText.toLowerCase();
+        box.style.display = text.includes(input) ? "" : "none";
+    });
+}
+</script>
 </body>
 </html>
