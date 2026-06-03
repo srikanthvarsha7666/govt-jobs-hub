@@ -161,4 +161,65 @@ input{
     margin:10px 0;
     border-radius:8px;
     border:1px solid gray;
+}/// ---------------- QUIZ ----------------
+const questions = [
+  {q:"India Capital?",options:["Delhi","Mumbai","Chennai"],answer:"Delhi"},
+  {q:"Telangana Formation Day?",options:["2 June","1 May","15 August"],answer:"2 June"},
+  {q:"National Animal?",options:["Tiger","Lion","Elephant"],answer:"Tiger"},
+  {q:"National Bird?",options:["Peacock","Parrot","Sparrow"],answer:"Peacock"},
+  {q:"Currency of India?",options:["Dollar","Rupee","Euro"],answer:"Rupee"},
+  {q:"PM of India?",options:["PM","President","CM"],answer:"PM"},
+  {q:"HTML full form?",options:["Hyper Text Markup Language","High Text","None"],answer:"Hyper Text Markup Language"},
+  {q:"JS used for?",options:["Programming","Design","Database"],answer:"Programming"},
+  {q:"Independence year?",options:["1947","1950","1942"],answer:"1947"},
+  {q:"Water formula?",options:["H2O","CO2","O2"],answer:"H2O"}
+];
+
+let current = 0;
+
+function loadQuestion(){
+  let q = questions[current];
+
+  document.getElementById("quiz").innerHTML =
+  `<p><b>Q${current+1}. ${q.q}</b></p>` +
+  q.options.map(opt =>
+    `<button onclick="checkAnswer('${opt}')">${opt}</button>`
+  ).join("<br>");
 }
+
+function checkAnswer(ans){
+  if(ans === questions[current].answer){
+    alert("Correct ✅");
+  } else {
+    alert("Wrong ❌");
+  }
+}
+
+function nextQuestion(){
+  current++;
+  if(current < questions.length){
+    loadQuestion();
+  } else {
+    document.getElementById("quiz").innerHTML = "Quiz Completed 🎉";
+  }
+}
+
+loadQuestion();
+
+
+/// ---------------- CURRENT AFFAIRS ----------------
+const ca = [
+  "ISRO new mission success.",
+  "India GDP growth increased.",
+  "New job notifications released.",
+  "Digital India expanding.",
+  "New education updates.",
+  "Railways new trains launched.",
+  "Aadhaar system improved.",
+  "UPSC calendar released.",
+  "India sports medals won.",
+  "Smart city projects growing."
+];
+
+document.getElementById("ca").innerHTML =
+  ca.map(i => `<p>• ${i}</p>`).join("");
