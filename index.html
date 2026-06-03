@@ -57,7 +57,80 @@
   <button>1 May</button>
   <button>15 August</button>
 </div>
+const allQuestions = {
+  0: [   // Day 0
+    {q:"India Capital?",options:["Delhi","Mumbai","Chennai"],answer:"Delhi"},
+    {q:"National Animal?",options:["Tiger","Lion","Elephant"],answer:"Tiger"}
+  ],
 
+  1: [   // Day 1
+    {q:"Telangana Formation Day?",options:["2 June","1 May","15 August"],answer:"2 June"},
+    {q:"Currency of India?",options:["Rupee","Dollar","Euro"],answer:"Rupee"}
+  ],
+
+  2: [   // Day 2
+    {q:"ISRO Full form?",options:["Indian Space Research Organisation","Indian Science","None"],answer:"Indian Space Research Organisation"},
+    {q:"National Bird?",options:["Peacock","Parrot","Crow"],answer:"Peacock"}
+  ]
+};
+
+// 📚 Current Affairs per day
+const allCA = {
+  0: [
+    "ISRO new mission success",
+    "Govt released job notifications"
+  ],
+  1: [
+    "India GDP increased",
+    "New railway projects started"
+  ],
+  2: [
+    "Digital India expansion",
+    "New education policy updates"
+  ]
+};
+
+// 👉 TODAY DATE BASED DAY SELECT
+let day = new Date().getDate() % 3; // 3 sets rotate avuthayi
+
+let questions = allQuestions[day];
+let ca = allCA[day];
+
+let current = 0;
+
+// ---------------- QUIZ ----------------
+function loadQuestion(){
+  let q = questions[current];
+
+  document.getElementById("quiz").innerHTML =
+  `<p><b>Q${current+1}. ${q.q}</b></p>` +
+  q.options.map(opt =>
+    `<button onclick="checkAnswer('${opt}')">${opt}</button>`
+  ).join("<br>");
+}
+
+function checkAnswer(ans){
+  if(ans === questions[current].answer){
+    alert("Correct ✅");
+  } else {
+    alert("Wrong ❌");
+  }
+}
+
+function nextQuestion(){
+  current++;
+  if(current < questions.length){
+    loadQuestion();
+  } else {
+    document.getElementById("quiz").innerHTML = "Today's Quiz Completed 🎉";
+  }
+}
+
+loadQuestion();
+
+// ---------------- CURRENT AFFAIRS ----------------
+document.getElementById("ca").innerHTML =
+  ca.map(i => `<p>• ${i}</p>`).join("");
 <div>
   <p>Q2. India Capital enti?</p>
   <button>Delhi</button>
