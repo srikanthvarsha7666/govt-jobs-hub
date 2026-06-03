@@ -46,6 +46,10 @@
 
 <h2>Daily Quiz</h2> 
   <h2>Daily Quiz</h2>
+  <h2>Daily Quiz</h2>
+
+<div id="quiz"></div>
+<button onclick="nextQuestion()">Next</button>
 
 <div>
   <p>Q1. Telangana Formation Day eppudu?</p>
@@ -71,7 +75,54 @@ function searchFun(){
         box.style.display = text.includes(input) ? "" : "none";
     });
 }
-</script>
+</script<script>
+const questions = [
+  {
+    q: "Telangana Formation Day eppudu?",
+    options: ["2 June", "1 May", "15 August"],
+    answer: "2 June"
+  },
+  {
+    q: "India Capital enti?",
+    options: ["Mumbai", "Delhi", "Hyderabad"],
+    answer: "Delhi"
+  }
+];
+
+let current = 0;
+
+function loadQuestion() {
+  let quizDiv = document.getElementById("quiz");
+
+  let q = questions[current];
+
+  quizDiv.innerHTML = `
+    <p><b>Q${current + 1}. ${q.q}</b></p>
+    ${q.options.map(opt =>
+      `<button onclick="checkAnswer('${opt}')">${opt}</button>`
+    ).join("<br>")}
+  `;
+}
+
+function checkAnswer(selected) {
+  if (selected === questions[current].answer) {
+    alert("Correct ✅");
+  } else {
+    alert("Wrong ❌");
+  }
+}
+
+function nextQuestion() {
+  current++;
+  if (current < questions.length) {
+    loadQuestion();
+  } else {
+    document.getElementById("quiz").innerHTML = "Quiz Completed 🎉";
+  }
+}
+
+loadQuestion();
+</script>>
 </body>
   <script>
 fetch("jobs.json")
