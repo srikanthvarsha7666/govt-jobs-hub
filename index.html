@@ -14,7 +14,8 @@
 <input type="text" id="search" placeholder="Search Notifications..." onkeyup="searchFun()">
 <h1>Govt Jobs Hub</h1>
 
-<h2>Latest Notifications</h2>
+<h2>Latest Notifications</h2> 
+<div id="jobs"></div>
 <div>
   <h3>SSC Recruitment 2026</h3>
   <p>Apply Online - Last Date: 30 June 2026</p>
@@ -72,4 +73,21 @@ function searchFun(){
 }
 </script>
 </body>
+  <script>
+fetch("jobs.json")
+.then(res => res.json())
+.then(data => {
+    let container = document.getElementById("jobs");
+
+    data.forEach(job => {
+        container.innerHTML += `
+        <div>
+            <h3>${job.title}</h3>
+            <p>${job.desc}</p>
+            <a href="${job.link}" target="_blank">Apply Here</a>
+        </div>
+        `;
+    });
+});
+</script>
 </html>
