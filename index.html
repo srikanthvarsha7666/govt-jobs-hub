@@ -123,6 +123,38 @@ function nextQuestion() {
 
 loadQuestion();
 </script>>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Govt App</title>
+</head>
+
+<body>
+
+<!-- 🔥 1. JOB LINKS -->
+<h2>📢 Govt Jobs Links</h2>
+<ul>
+  <li><a href="https://www.naukri.com">Naukri</a></li>
+</ul>
+
+<hr>
+
+<!-- 🔥 2. QUIZ SECTION (IKKADA START) -->
+<h2>🧠 Daily Quiz</h2>
+<div id="quiz"></div>
+<button onclick="nextQuestion()">Next</button>
+
+<hr>
+
+<!-- 🔥 3. CURRENT AFFAIRS -->
+<h2>📚 Current Affairs</h2>
+<div id="ca"></div>
+
+<!-- ❗ IMPORTANT: SCRIPT ALWAYS LAST -->
+<script src="script.js"></script>
+
+</body>
+</html>
 </body>
   <script>
 fetch("jobs.json")
