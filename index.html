@@ -6,5 +6,38 @@
 <body>
     <h1>Job Alerts Telugu</h1>
     <p>Latest Government Jobs Updates</p>
+    <div id="jobs"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "PASTE_YOUR_API_KEY_HERE",
+  authDomain: "job-alerts-telugu.firebaseapp.com",
+  projectId: "job-alerts-telugu",
+  storageBucket: "job-alerts-telugu.firebasestorage.app",
+  messagingSenderId: "258376583566",
+  appId: "1:258376583566:web:f01d7c70096d58e6273cdf"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const snapshot = await getDocs(collection(db, "jobs"));
+
+snapshot.forEach((doc) => {
+  const data = doc.data();
+
+  document.getElementById("jobs").innerHTML += `
+    <div>
+      <h3>${data.notification}</h3>
+      <p>${data.date}</p>
+      <a href="${data.link}" target="_blank">Apply Now</a>
+      <hr>
+    </div>
+  `;
+});
+</script>
 </body>
 </html>
